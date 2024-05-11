@@ -10,6 +10,7 @@ function(declare, lang,customIconDecorator) {
 	 */
 	console.log("insde global script 2");
 	//added to check the commit fromn eclipse 
+	// added from normal git bash
 	
 	
 });
