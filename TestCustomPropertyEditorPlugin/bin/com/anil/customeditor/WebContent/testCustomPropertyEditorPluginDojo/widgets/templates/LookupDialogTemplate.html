@@ -1,0 +1,19 @@
+<div class="LookupDialogClass">
+    <!-- The node that should get the focus should have the focusNode attach point. pvr/widget/_Property._createEditorWidget needs this because it wants to set the aria-labelledby on it -->
+   <div class="CustomerTextClass" >
+   	<label for="customername" class="custLabel">Customer Name</label>
+	<input type="text" name="customername" 
+    data-dojo-type="dijit/form/TextBox" data-dojo-attach-point="customerTextNode"
+    data-dojo-props="trim:true, propercase:true"  />
+   </div>
+   <div>
+   <button data-dojo-attach-point="searchButtonNode" class="searchButtonClass" data-dojo-type="dijit/form/Button" 
+   data-dojo-attach-event="onClick:onSearchClick"
+			type="button">Search</button>
+   </div>
+   
+   
+    
+</div>
+<div data-dojo-attach-point="customerResultsgrid"  style="width: 100%;height:320px;overflow:visible;    padding-top: 10px;">
+   </div>

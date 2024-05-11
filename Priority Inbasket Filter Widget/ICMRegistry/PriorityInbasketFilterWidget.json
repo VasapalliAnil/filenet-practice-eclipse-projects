@@ -1,0 +1,29 @@
+{
+	"id":"Priority Inbasket Filter Widget",
+	"title":"Priority Inbasket Filter Widget",
+	"category":"Priority Inbasket Filter Widget",
+	"description":"Priority Inbasket Filter Widget",
+	"definition":"PriorityInbasketFilterWidget.json",
+	"preview":"images/comment_preview.png",
+	"icon":"images/comment_icon.png",
+	"runtimeClassName":"icmsample.pgwidget.PriorityInbasketFilterWidget",
+	"help":"",
+	"previewThumbnail":"images/comment_thumb.png",
+	"properties":[],
+	"events":[
+		{
+			"id":"ReceiveInbasketInfo",
+			"title":"Receive Inbasket Info",
+			"direction":"subscribed",
+			"functionName":"handle_ReceiveInbasketInfo",
+			"description":"Receives the Selected Inbasket Info from the Inbasket widget using incoming wiring from inbasket"
+		},
+		{
+			"id":"icm.ApplyFilter",
+			"title":"Apply Dynamic Filter",
+			"direction":"published",
+			"type":"broadcast",
+			"description":"This event publish the icm.ApplyFilter from this widget to Inbasket widget"
+		}
+	]
+}

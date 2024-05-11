@@ -1,0 +1,38 @@
+{
+	"Name":"Priority Inbasket Filter Widget",
+	"Description":"Priority Inbasket Filter Widget",
+	"Locale":"",
+	"Version":"1.0",
+	"Categories":[
+		{
+			"id":"Priority Inbasket Filter Widget",
+			"title":"Priority Inbasket Filter Widget"
+		}
+	],
+	"Widgets":[
+		{
+			"id":"Priority Inbasket Filter Widget",
+			"title":"Priority Inbasket Filter Widget",
+			"category":"Priority Inbasket Filter Widget",
+			"description":"Priority Inbasket Filter Widget",
+			"definition":"PriorityInbasketFilterWidget.json",
+			"preview":"images/comment_preview.png",
+			"icon":"images/comment_icon.png",
+			"runtimeClassName":"icmsample.pgwidget.PriorityInbasketFilterWidget",
+			"help":"",
+			"previewThumbnail":"images/comment_thumb.png"
+		},
+		{
+		   "id":"CustomInbasket",
+		    "title":"Custom Inbasket",
+		    "category":"Priority Inbasket Filter Widget",
+		    "description":"Custom in-baskets use F_Subject and B615_flo as the examples to custom the column decorator. Please modify CustomInbasket.js and use the correct symbolic names",
+		    "definition":"CustomInbasket.json",
+			"preview": "images/comment_preview.png",
+			"icon": "images/comment_icon.png",
+		    "runtimeClassName":"icmsample.pgwidget.custominbasket.CustomInbasket",
+		    "help": "acmwrh126.htm",
+		    "previewThumbnail":"images/comment_thumb.gif"
+		}
+	]
+}
