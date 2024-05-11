@@ -9,6 +9,7 @@ function(declare, lang,customIconDecorator) {
 	 * Use this function to add any global JavaScript methods your plug-in requires.
 	 */
 	console.log("insde global script 2");
+	//added to check the commit fromn eclipse 
 	
 	
 });
