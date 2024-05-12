@@ -159,7 +159,8 @@ public class CaseManagementUtility {
 		if (excase != null) {
 			tasks = excase.fetchTasks();
 			for (Task t : tasks) {
-				System.out.println("Task Name :" + t.getName() +" and Task State is : "+t.getState());
+				System.out.println("Task Name :" + t.getName() +" and Task State is : "+t.getState() +" and Task Type is :"+t.getTaskTypeName());
+				
 			}
 		}
 		return tasks;
@@ -182,5 +183,7 @@ public class CaseManagementUtility {
 		return wobNum;
 		
 	}
+	
+	
 
 }

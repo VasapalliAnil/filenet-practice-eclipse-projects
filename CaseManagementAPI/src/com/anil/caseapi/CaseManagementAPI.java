@@ -19,10 +19,11 @@ public class CaseManagementAPI {
 		CaseManagementUtility cutil=new CaseManagementUtility();
 		//cutil.getSolutionCaseTypes(tos, solutionName);
 		//cutil.createCase(tos, solutionName, caseType);
-		
+		String id="{80376C8F-0000-C015-A313-0DE45A8B72C9}";
 		// Update a case 
-		Case c=cutil.retrieveCaseByCaseIdentifier(tos, solutionName, "CCA_NewCreditCardApplication_000000310001");
-		cutil.getWobNumById( tos,  solutionName,c.getId().toString());
+		
+		//cutil.completeCaseWorkingTasksById(tos,  solutionName,id);
+		cutil.getCaseTasksById(tos, solutionName, id);
 		// close the connections
 		CaseManagementConnection.closeConnection();
 	}
