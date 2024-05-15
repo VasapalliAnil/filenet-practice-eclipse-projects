@@ -8,5 +8,6 @@
 	<classpathentry kind="lib" path="lib/peResources.jar"/>
 	<classpathentry kind="lib" path="lib/xlxpScanner.jar"/>
 	<classpathentry kind="lib" path="lib/xlxpScannerUtils.jar"/>
+	<classpathentry kind="lib" path="resources"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
