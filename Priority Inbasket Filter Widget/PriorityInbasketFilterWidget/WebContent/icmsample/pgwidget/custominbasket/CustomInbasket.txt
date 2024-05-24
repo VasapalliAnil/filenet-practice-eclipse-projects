@@ -1,0 +1,51 @@
+
+
+define(["dojo/_base/declare",
+        "dojo/json",
+		"dojo/_base/lang",
+        "icm/pgwidget/inbasket/Inbasket"],
+        function(declare, lang,Inbasket){
+	
+	return declare("icmsample.pgwidget.custominbasket.CustomInbasket", [Inbasket], {
+
+		postCreate: function() {
+			this.inherited(arguments);
+			//Code from ICM Curing Widget
+			aspect
+		},
+		
+		getColumnDecorator: function(){
+			var deco = {};
+			
+			var priorityPropertyName = this.getSolution().getPrefix()+"_Priority";
+			deco[priorityPropertyName] = lang.hitch(this, function(data, rowId, rowIndex) {
+				var cl = this.contentLists[this.selectedIndex];
+				var item = cl.grid.row(rowId).item();
+				
+				// Get a property value
+				
+				var property = item.getValue(priorityPropertyName);
+					
+				// Set decorator for the property
+				if (!property) {
+					return "";
+				}
+				
+
+				// Set the cell content
+				if(property == true){
+    				console.log("inside priority decorator");
+    				return "<img src='plugin/CCAScriptAdapterPlugin/getResource/cCAScriptAdapterPluginDojo/priority.png' >";
+    			}
+				else{
+					return "";
+				}
+			});			
+
+			return deco;
+		},
+		
+		
+	    _eoc_: null
+	});
+});

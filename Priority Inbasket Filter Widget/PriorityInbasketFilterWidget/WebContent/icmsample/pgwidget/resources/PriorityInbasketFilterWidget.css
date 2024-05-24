@@ -1,0 +1,15 @@
+/* styles for PriorityInbasketFilterWidget */
+.icmPriorityInbasketFilterWidget {
+	border: 2px black;
+}
+
+.priorityIcon {
+	background-image: url('priority.png');
+	background-repeat: no-repeat;
+	width: 48px;
+	height: 48px;
+	text-align: center;
+}
+
+
+
