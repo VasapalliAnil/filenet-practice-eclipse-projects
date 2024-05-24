@@ -88,60 +88,57 @@ function(declare,
 			
 			this.logExit("reset");
 		},
-		 updateDisplay:function() {
-            document.getElementById('display').innerText = displayValue;
+		clearDisplay: function() {
+            this.display.innerHTML = '0';
         },
 
-         clearDisplay:function() {
-            displayValue = '0';
-            this.updateDisplay();
-        },
-
-         appendNumber:function(number) {
-            if (displayValue === '0' || waitingForSecondOperand) {
-                displayValue = number;
-                waitingForSecondOperand = false;
+        appendNumber: function(evt) {
+            var number = evt.target.innerHTML;
+            if (this.display.innerHTML === '0' || this.waitingForSecondOperand) {
+                this.display.innerHTML = number;
+                this.waitingForSecondOperand = false;
             } else {
-                displayValue += number;
-            }
-            this.updateDisplay();
-        },
-
-         appendOperator:function(op) {
-            operator = op;
-            firstOperand = displayValue;
-            waitingForSecondOperand = true;
-        },
-
-         appendDecimal:function() {
-            if (!displayValue.includes('.')) {
-                displayValue += '.';
-                this.updateDisplay();
+                this.display.innerHTML += number;
             }
         },
 
-         calculate:function() {
-            let result = '';
-            switch (operator) {
+        appendOperator: function(evt) {
+            this.operator = evt.target.innerHTML;
+            this.firstOperand = this.display.innerHTML;
+            this.waitingForSecondOperand = true;
+        },
+
+        appendDecimal: function() {
+            if (!this.display.innerHTML.includes('.')) {
+                this.display.innerHTML += '.';
+            }
+        },
+
+        calculate: function() {
+            var result = '';
+            var firstOperand = parseFloat(this.firstOperand);
+            var secondOperand = parseFloat(this.display.innerHTML);
+
+            switch (this.operator) {
                 case '+':
-                    result = parseFloat(firstOperand) + parseFloat(displayValue);
+                    result = firstOperand + secondOperand;
                     break;
                 case '-':
-                    result = parseFloat(firstOperand) - parseFloat(displayValue);
+                    result = firstOperand - secondOperand;
                     break;
                 case '*':
-                    result = parseFloat(firstOperand) * parseFloat(displayValue);
+                    result = firstOperand * secondOperand;
                     break;
                 case '/':
-                    result = parseFloat(firstOperand) / parseFloat(displayValue);
+                    result = firstOperand / secondOperand;
                     break;
                 default:
-                    break;
+                    return;
             }
-            displayValue = result.toString();
-            this.updateDisplay();
-            operator = '';
-            firstOperand = '';
+
+            this.display.innerHTML = result.toString();
+            this.operator = '';
+            this.firstOperand = '';
         }
 		
 	

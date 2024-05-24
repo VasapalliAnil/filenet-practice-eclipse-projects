@@ -4,13 +4,13 @@
 	background: url('images/calculator.png') no-repeat;
 }
 
-/* .calculator-container { */
-/* 	display: flex; */
-/* 	justify-content: center; */
-/* 	align-items: center; */
-/* 	height: 100vh; */
-/* 	background-color: #FA9A4E; */
-/* } */
+.calculator-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background-color: #FA9A4E;
+}
 
 .calculator {
 	background-color: #36454F;
