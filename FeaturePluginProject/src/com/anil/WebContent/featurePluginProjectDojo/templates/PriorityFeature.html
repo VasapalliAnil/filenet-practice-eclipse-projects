@@ -1,44 +1,35 @@
 <div class="ecmCenterPane">
-	<div class="calculator-container">
-		<div class="calculator">
-			<div class="display" id="display">0</div>
-			<div class="keys">
-				<button class="specialkeys" data-dojo-attach-point="cancelbtn"
-					data-dojo-attach-event="onClick: clearDisplay">C</button>
-				<button data-dojo-attach-point="num7"
-					data-dojo-attach-event="onClick: appendNumber('7')">7</button>
-				<button data-dojo-attach-point="num8"
-					data-dojo-attach-event="onClick: appendNumber('8')">8</button>
-				<button data-dojo-attach-point="num9"
-					data-dojo-attach-event="onClick: appendNumber('9')">9</button>
-				<button class="operations" data-dojo-attach-point="slash"
-					data-dojo-attach-event="onClick: appendOperator('/')">/</button>
-				<button data-dojo-attach-point="num4"
-					data-dojo-attach-event="onClick: appendNumber('4')">4</button>
-				<button data-dojo-attach-point="num5"
-					data-dojo-attach-event="onClick: appendNumber('5')">5</button>
-				<button data-dojo-attach-point="num6"
-					data-dojo-attach-event="onClick: appendNumber('6')">6</button>
-				<button  class="operations" data-dojo-attach-point="asterik"
-					data-dojo-attach-event="onClick: appendOperator('*')">*</button>
-				<button data-dojo-attach-point="num1"
-					data-dojo-attach-event="onClick: appendNumber('1')">1</button>
-				<button data-dojo-attach-point="num2"
-					data-dojo-attach-event="onClick: appendNumber('2')">2</button>
-				<button data-dojo-attach-point="num3"
-					data-dojo-attach-event="onClick: appendNumber('3')">3</button>
-				<button class="operations" data-dojo-attach-point="hyphen"
-					data-dojo-attach-event="onClick: appendOperator('-')">-</button>
-				<button data-dojo-attach-point="num0"
-					data-dojo-attach-event="onClick: appendNumber('0')">0</button>
-				<button data-dojo-attach-point="dot"
-					data-dojo-attach-event="onClick: appendDecimal('.')">.</button>
-				<button class="specialkeys"data-dojo-attach-point="equal"
-					data-dojo-attach-event="onClick: calculate">=</button>
-				<button class="operations" data-dojo-attach-point="plus"
-					data-dojo-attach-event="onClick: appendOperator('+')">+</button>
-			</div>
+	<!--  Please add your configuration pane -->
+	<!--  For example
+    <div data-dojo-type="idx/layout/BorderContainer" data-dojo-props="gutters:true">
+		<div data-dojo-attach-point="topPane" data-dojo-type="dijit/layout/ContentPane" 
+				data-dojo-props="splitter:true,region:'top'">
+		</div>
+		<div data-dojo-attach-point="centerPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'">
 		</div>
 	</div>
+    -->
+    
+   <div class="calculator">
+        <div class="display" id="display">0</div>
+        <div class="keys">
+            <button data-dojo-attach-point="cancelbtn" data-dojo-attach-event="onClick: clearDisplay" >C</button>
+            <button data-dojo-attach-point="num7" data-dojo-attach-event="onClick: appendNumber('7')">7</button>
+            <button data-dojo-attach-point="num8" data-dojo-attach-event="onClick: appendNumber('8')">8</button>
+            <button data-dojo-attach-point="num9" data-dojo-attach-event="onClick: appendNumber('9')">9</button>
+            <button data-dojo-attach-point="slash" data-dojo-attach-event="onClick: appendOperator('/')">/</button>
+            <button data-dojo-attach-point="num4" data-dojo-attach-event="onClick: appendNumber('4')">4</button>
+            <button data-dojo-attach-point="num5" data-dojo-attach-event="onClick: appendNumber('5')">5</button>
+            <button data-dojo-attach-point="num6" data-dojo-attach-event="onClick: appendNumber('6')">6</button>
+            <button data-dojo-attach-point="asterik" data-dojo-attach-event="onClick: appendOperator('*')">*</button>
+            <button data-dojo-attach-point="num1" data-dojo-attach-event="onClick: appendNumber('1')">1</button>
+            <button data-dojo-attach-point="num2" data-dojo-attach-event="onClick: appendNumber('2')">2</button>
+            <button data-dojo-attach-point="num3" data-dojo-attach-event="onClick: appendNumber('3')">3</button>
+            <button data-dojo-attach-point="hyphen" data-dojo-attach-event="onClick: appendOperator('-')">-</button>
+            <button data-dojo-attach-point="num0" data-dojo-attach-event="onClick: appendNumber('0')">0</button>
+            <button data-dojo-attach-point="dot" data-dojo-attach-event="onClick: appendDecimal('.')">.</button>
+            <button data-dojo-attach-point="equal"  data-dojo-attach-event="onClick: calculate">=</button>
+            <button data-dojo-attach-point="plus" data-dojo-attach-event="onClick: appendOperator('+')">+</button>
+        </div>
+    </div>
 </div>
-
