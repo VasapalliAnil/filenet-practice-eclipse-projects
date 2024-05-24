@@ -1,7 +1,8 @@
 define([
 	"dojo/_base/declare",
 	"ecm/widget/layout/_LaunchBarPane",
-	"dojo/text!./templates/PriorityFeature.html"
+	//"dojo/text!./templates/PriorityFeature.html"
+	"dojo/text!./templates/Calculator.html"
 ],
 function(declare,
 		_LaunchBarPane,
@@ -81,10 +82,8 @@ function(declare,
 			this.needReset = false;
 			
 			this.logExit("reset");
-		},
-		
-		calculateResult:function(num1,num2){
-			return num1 + num2;
 		}
+		
+	
 	});
 });
