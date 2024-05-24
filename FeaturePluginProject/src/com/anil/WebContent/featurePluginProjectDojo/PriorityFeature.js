@@ -1,8 +1,13 @@
+displayValue = '0';
+operator = '';
+firstOperand = '';
+waitingForSecondOperand = false;
+console.log("Calculator loaded ")
 define([
 	"dojo/_base/declare",
 	"ecm/widget/layout/_LaunchBarPane",
-	//"dojo/text!./templates/PriorityFeature.html"
-	"dojo/text!./templates/Calculator.html"
+	"dojo/text!./templates/PriorityFeature.html"
+	//"dojo/text!./templates/Calculator.html"
 ],
 function(declare,
 		_LaunchBarPane,
@@ -82,7 +87,62 @@ function(declare,
 			this.needReset = false;
 			
 			this.logExit("reset");
-		}
+		},
+		 updateDisplay:function() {
+            document.getElementById('display').innerText = displayValue;
+        },
+
+         clearDisplay:function() {
+            displayValue = '0';
+            updateDisplay();
+        },
+
+         appendNumber:function(number) {
+            if (displayValue === '0' || waitingForSecondOperand) {
+                displayValue = number;
+                waitingForSecondOperand = false;
+            } else {
+                displayValue += number;
+            }
+            updateDisplay();
+        },
+
+         appendOperator:function(op) {
+            operator = op;
+            firstOperand = displayValue;
+            waitingForSecondOperand = true;
+        },
+
+         appendDecimal:function() {
+            if (!displayValue.includes('.')) {
+                displayValue += '.';
+                updateDisplay();
+            }
+        },
+
+         calculate:function() {
+            let result = '';
+            switch (operator) {
+                case '+':
+                    result = parseFloat(firstOperand) + parseFloat(displayValue);
+                    break;
+                case '-':
+                    result = parseFloat(firstOperand) - parseFloat(displayValue);
+                    break;
+                case '*':
+                    result = parseFloat(firstOperand) * parseFloat(displayValue);
+                    break;
+                case '/':
+                    result = parseFloat(firstOperand) / parseFloat(displayValue);
+                    break;
+                default:
+                    break;
+            }
+            displayValue = result.toString();
+            updateDisplay();
+            operator = '';
+            firstOperand = '';
+        }
 		
 	
 	});

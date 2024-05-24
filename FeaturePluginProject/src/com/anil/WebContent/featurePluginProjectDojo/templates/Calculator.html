@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        
+    </style>
+</head>
+<body>
+    
+    <script>
+        
+
+        function updateDisplay() {
+            document.getElementById('display').innerText = displayValue;
+        }
+
+        function clearDisplay() {
+            displayValue = '0';
+            updateDisplay();
+        }
+
+        function appendNumber(number) {
+            if (displayValue === '0' || waitingForSecondOperand) {
+                displayValue = number;
+                waitingForSecondOperand = false;
+            } else {
+                displayValue += number;
+            }
+            updateDisplay();
+        }
+
+        function appendOperator(op) {
+            operator = op;
+            firstOperand = displayValue;
+            waitingForSecondOperand = true;
+        }
+
+        function appendDecimal() {
+            if (!displayValue.includes('.')) {
+                displayValue += '.';
+                updateDisplay();
+            }
+        }
+
+        function calculate() {
+            let result = '';
+            switch (operator) {
+                case '+':
+                    result = parseFloat(firstOperand) + parseFloat(displayValue);
+                    break;
+                case '-':
+                    result = parseFloat(firstOperand) - parseFloat(displayValue);
+                    break;
+                case '*':
+                    result = parseFloat(firstOperand) * parseFloat(displayValue);
+                    break;
+                case '/':
+                    result = parseFloat(firstOperand) / parseFloat(displayValue);
+                    break;
+                default:
+                    break;
+            }
+            displayValue = result.toString();
+            updateDisplay();
+            operator = '';
+            firstOperand = '';
+        }
+
+        updateDisplay();
+    </script>
+</body>
+</html>
