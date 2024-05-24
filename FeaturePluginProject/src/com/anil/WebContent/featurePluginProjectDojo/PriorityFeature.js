@@ -94,7 +94,7 @@ function(declare,
 
          clearDisplay:function() {
             displayValue = '0';
-            updateDisplay();
+            this.updateDisplay();
         },
 
          appendNumber:function(number) {
@@ -104,7 +104,7 @@ function(declare,
             } else {
                 displayValue += number;
             }
-            updateDisplay();
+            this.updateDisplay();
         },
 
          appendOperator:function(op) {
@@ -116,7 +116,7 @@ function(declare,
          appendDecimal:function() {
             if (!displayValue.includes('.')) {
                 displayValue += '.';
-                updateDisplay();
+                this.updateDisplay();
             }
         },
 
@@ -139,7 +139,7 @@ function(declare,
                     break;
             }
             displayValue = result.toString();
-            updateDisplay();
+            this.updateDisplay();
             operator = '';
             firstOperand = '';
         }
