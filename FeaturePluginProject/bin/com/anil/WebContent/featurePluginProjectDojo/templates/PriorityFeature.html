@@ -1,0 +1,25 @@
+<div class="ecmCenterPane">
+	<!--  Please add your configuration pane -->
+	<!--  For example
+    <div data-dojo-type="idx/layout/BorderContainer" data-dojo-props="gutters:true">
+		<div data-dojo-attach-point="topPane" data-dojo-type="dijit/layout/ContentPane" 
+				data-dojo-props="splitter:true,region:'top'">
+		</div>
+		<div data-dojo-attach-point="centerPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'">
+		</div>
+	</div>
+    -->
+    
+     <h1>Sum Calculator</h1>
+    <form onsubmit="calculateResult();">
+        <label for="number1">Number 1:</label>
+        <input type="number" id="number1" name="number1" required><br><br>
+        
+        <label for="number2">Number 2:</label>
+        <input type="number" id="number2" name="number2" required><br><br>
+        
+        <button type="submit">Submit</button>
+    </form>
+    <br>
+    <div id="result">Result: </div>
+</div>
