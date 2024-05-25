@@ -33,7 +33,7 @@ public class  PriorityFeature extends PluginFeature {
 	 * @return A short description for the menu.
 	 */
 	public String getName(Locale locale) {
-		return "PriorityFeature";
+		return "Calculator Feature";
 	}
 
 	/**
