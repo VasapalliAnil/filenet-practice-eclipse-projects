@@ -4,3 +4,6 @@ C:\Users\Administrator\source\repos\filenet-practice-eclipse-projects\FileNetUti
 C:\Users\Administrator\source\repos\filenet-practice-eclipse-projects\FileNetUtilityCSharp\FileNetUtilityCSharp\obj\Release\FileNetUtilityCSharp.csproj.CoreCompileInputs.cache
 C:\Users\Administrator\source\repos\filenet-practice-eclipse-projects\FileNetUtilityCSharp\FileNetUtilityCSharp\obj\Release\FileNetUtilityCSharp.exe
 C:\Users\Administrator\source\repos\filenet-practice-eclipse-projects\FileNetUtilityCSharp\FileNetUtilityCSharp\obj\Release\FileNetUtilityCSharp.pdb
+C:\Users\Administrator\source\repos\filenet-practice-eclipse-projects\FileNetUtilityCSharp\FileNetUtilityCSharp\bin\Release\FileNet.Api.dll
+C:\Users\Administrator\source\repos\filenet-practice-eclipse-projects\FileNetUtilityCSharp\FileNetUtilityCSharp\obj\Release\FileNetUtilityCSharp.csprojAssemblyReference.cache
+C:\Users\Administrator\source\repos\filenet-practice-eclipse-projects\FileNetUtilityCSharp\FileNetUtilityCSharp\obj\Release\FileNetUtilityCSharp.csproj.CopyComplete
