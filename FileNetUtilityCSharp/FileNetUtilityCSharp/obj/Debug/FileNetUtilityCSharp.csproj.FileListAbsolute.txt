@@ -1,0 +1,7 @@
+C:\Users\Administrator\source\repos\filenet-practice-eclipse-projects\FileNetUtilityCSharp\FileNetUtilityCSharp\bin\Debug\FileNetUtilityCSharp.exe.config
+C:\Users\Administrator\source\repos\filenet-practice-eclipse-projects\FileNetUtilityCSharp\FileNetUtilityCSharp\bin\Debug\FileNetUtilityCSharp.exe
+C:\Users\Administrator\source\repos\filenet-practice-eclipse-projects\FileNetUtilityCSharp\FileNetUtilityCSharp\bin\Debug\FileNetUtilityCSharp.pdb
+C:\Users\Administrator\source\repos\filenet-practice-eclipse-projects\FileNetUtilityCSharp\FileNetUtilityCSharp\obj\Debug\FileNetUtilityCSharp.csprojAssemblyReference.cache
+C:\Users\Administrator\source\repos\filenet-practice-eclipse-projects\FileNetUtilityCSharp\FileNetUtilityCSharp\obj\Debug\FileNetUtilityCSharp.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\filenet-practice-eclipse-projects\FileNetUtilityCSharp\FileNetUtilityCSharp\obj\Debug\FileNetUtilityCSharp.exe
+C:\Users\Administrator\source\repos\filenet-practice-eclipse-projects\FileNetUtilityCSharp\FileNetUtilityCSharp\obj\Debug\FileNetUtilityCSharp.pdb
