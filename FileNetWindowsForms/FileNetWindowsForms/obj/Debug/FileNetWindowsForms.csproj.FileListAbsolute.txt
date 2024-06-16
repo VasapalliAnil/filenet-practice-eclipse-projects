@@ -1,0 +1,12 @@
+C:\Users\Administrator\source\repos\filenet-practice-eclipse-projects\FileNetWindowsForms\FileNetWindowsForms\bin\Debug\FileNetWindowsForms.exe.config
+C:\Users\Administrator\source\repos\filenet-practice-eclipse-projects\FileNetWindowsForms\FileNetWindowsForms\bin\Debug\FileNetWindowsForms.exe
+C:\Users\Administrator\source\repos\filenet-practice-eclipse-projects\FileNetWindowsForms\FileNetWindowsForms\bin\Debug\FileNetWindowsForms.pdb
+C:\Users\Administrator\source\repos\filenet-practice-eclipse-projects\FileNetWindowsForms\FileNetWindowsForms\obj\Debug\FileNetWindowsForms.csprojAssemblyReference.cache
+C:\Users\Administrator\source\repos\filenet-practice-eclipse-projects\FileNetWindowsForms\FileNetWindowsForms\obj\Debug\FileNetWindowsForms.Form1.resources
+C:\Users\Administrator\source\repos\filenet-practice-eclipse-projects\FileNetWindowsForms\FileNetWindowsForms\obj\Debug\FileNetWindowsForms.Properties.Resources.resources
+C:\Users\Administrator\source\repos\filenet-practice-eclipse-projects\FileNetWindowsForms\FileNetWindowsForms\obj\Debug\FileNetWindowsForms.csproj.GenerateResource.cache
+C:\Users\Administrator\source\repos\filenet-practice-eclipse-projects\FileNetWindowsForms\FileNetWindowsForms\obj\Debug\FileNetWindowsForms.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\filenet-practice-eclipse-projects\FileNetWindowsForms\FileNetWindowsForms\obj\Debug\FileNetWindowsForms.exe
+C:\Users\Administrator\source\repos\filenet-practice-eclipse-projects\FileNetWindowsForms\FileNetWindowsForms\obj\Debug\FileNetWindowsForms.pdb
+C:\Users\Administrator\source\repos\filenet-practice-eclipse-projects\FileNetWindowsForms\FileNetWindowsForms\bin\Debug\FileNet.Api.dll
+C:\Users\Administrator\source\repos\filenet-practice-eclipse-projects\FileNetWindowsForms\FileNetWindowsForms\obj\Debug\FileNetWindowsForms.csproj.CopyComplete
