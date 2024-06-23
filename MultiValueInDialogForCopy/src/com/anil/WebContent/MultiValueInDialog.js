@@ -31,7 +31,13 @@ require(["dojo/_base/lang","dojo/on", "dojo/dom","dojo/aspect", "pvr/widget/edit
 				}, "copyButton");
 
 					containerNode.appendChild(copyButton.domNode);
-					containerNode.childNodes[2].childNodes[0].style="border:none;outline:none;background-color:transparent;"
+					if(containerNode.childNodes[2].childNodes[0] != undefined){
+						containerNode.childNodes[2].childNodes[0].style="border:none;outline:none;background-color:transparent;"
+					}
+					else{
+						containerNode.childNodes[2].style="border:none;outline:none;background-color:transparent;"
+					}
+					
 			}
         });
 	
