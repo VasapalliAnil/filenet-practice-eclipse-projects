@@ -15,6 +15,7 @@ require(["dojo/_base/lang","dojo/on", "dojo/dom","dojo/aspect", "pvr/widget/edit
 					
 					label: "Copy",
 					iconClass: "copy-button",
+					 showLabel: false,
 					onClick: function() {
 						//this.domNode.style="margin-left:25px; width: 24px; height: 24px;background: url('plugin/MultiValueInDialog/getResource/images/view-eye.png') no-repeat;";
                     var label = this.getParent().domNode.childNodes[1].innerText;
