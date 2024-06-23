@@ -17,7 +17,7 @@ require(["dojo/_base/lang","dojo/on", "dojo/dom","dojo/aspect", "pvr/widget/edit
 					iconClass: "copy-button",
 					 showLabel: false,
 					onClick: function() {
-						//this.domNode.style="margin-left:25px; width: 24px; height: 24px;background: url('plugin/MultiValueInDialog/getResource/images/view-eye.png') no-repeat;";
+						this.domNode.style="margin-left:25px; width: 24px; height: 24px;border:none;background-color:transparent;outline:none;";
                     var label = this.getParent().domNode.childNodes[1].innerText;
                     
                     
@@ -31,7 +31,7 @@ require(["dojo/_base/lang","dojo/on", "dojo/dom","dojo/aspect", "pvr/widget/edit
 				}, "copyButton");
 
 				// set the style of Copy Button
-				copyButton.domNode.style="border:none;";
+				copyButton.domNode.style="margin-left:25px; width: 24px; height: 24px;border:none;background-color:transparent;outline:none;";
 				containerNode.appendChild(copyButton.domNode);
 			}
         });
