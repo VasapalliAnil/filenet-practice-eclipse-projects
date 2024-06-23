@@ -15,13 +15,12 @@ require(["dojo/_base/lang","dojo/on", "dojo/dom","dojo/aspect", "pvr/widget/edit
 					
 					label: "Copy",
 					iconClass: "copy-button",
-					 showLabel: false,
+					showLabel: false,
 					onClick: function() {
-						console.log("Button Clicked");
-						//this.domNode.style="margin-left:25px; width: 24px; height: 24px;border:none;background-color:transparent;outline:none;";
-                    var label = this.getParent().domNode.childNodes[1].innerText;
-                    
-                    
+					console.log("Button Clicked");
+					// label value
+					var label = this.getParent().domNode.childNodes[1].innerText;
+					// create a message dialog
                     var messageDialog = new ecm.widget.dialog.BaseDialog();
 					messageDialog.setTitle("Value");
 					messageDialog.setMessage(label,"info");
@@ -31,9 +30,8 @@ require(["dojo/_base/lang","dojo/on", "dojo/dom","dojo/aspect", "pvr/widget/edit
 					}
 				}, "copyButton");
 
-				// set the style of Copy Button
-				//copyButton.domNode.style="margin-left:25px; width: 24px; height: 24px;border:none;background-color:transparent;outline:none;";
-				containerNode.appendChild(copyButton.domNode);
+					containerNode.appendChild(copyButton.domNode);
+					containerNode.childNodes[2].childNodes[0].style="border:none;outline:none;background-color:transparent;"
 			}
         });
 	
