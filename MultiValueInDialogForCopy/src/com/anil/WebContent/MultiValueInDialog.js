@@ -31,7 +31,7 @@ require(["dojo/_base/lang","dojo/on", "dojo/dom","dojo/aspect", "pvr/widget/edit
 				}, "copyButton");
 
 				// set the style of Copy Button
-				//copyButton.domNode.style="margin-left:25px; width: 24px; height: 24px;background: url('plugin/MultiValueInDialog/getResource/images/hidden-eye.png') no-repeat;";
+				copyButton.domNode.style="border:none;";
 				containerNode.appendChild(copyButton.domNode);
 			}
         });

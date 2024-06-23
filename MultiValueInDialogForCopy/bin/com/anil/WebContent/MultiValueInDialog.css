@@ -4,4 +4,8 @@
             width: 24px; /* Set the width of the button to fit the icon */
             height: 24px; /* Set the height of the button to fit the icon */
            background: url('images/view-eye.png') no-repeat;
+           
+        }
+ .copy-button:hover {
+            background-color: transparent; /* Prevent color change on hover */
         }
