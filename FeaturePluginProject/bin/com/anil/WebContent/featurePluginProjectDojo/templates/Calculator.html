@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Calculator with Dojo</title>
+    <style>
+
+
+       
+.calculator {
+    background-color: #36454F;
+
+    overflow: hidden;
+    width: 600px;
+    padding: 20px 40px;
+    border-radius: 45px 45px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.display {
+    background-color: #36454F;
+    color: #fff;
+    font-size: 2em;
+    padding: 25px;
+    text-align: right;
+    grid-column: span 4;
+}
+
+        .keys {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 13px;
+        }
+
+        button {
+    background-color: black;
+    border: none;
+    border-radius: 20px 20px;
+    color: #fff;
+    font-size: 1.5em;
+    padding: 17px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+button.specialkeys{
+background-color: #FF5733;
+}
+
+        button:hover {
+            background-color: #DAF7A6;
+			color:black;
+        }
+		button.specialkeys:hover{
+		background-color:#ffccff;
+		}
+		button.operations:hover{
+		background-color:#FFC300;
+		}
+		
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/dojo/1.16.3/dojo/dojo.js"></script>
+    <script>
+        require([
+            'dojo/parser', 
+            'dojo/dom', 
+            'dojo/on', 
+            'dojo/ready', 
+            'dijit/_WidgetBase', 
+            'dijit/_TemplatedMixin', 
+            'dijit/_WidgetsInTemplateMixin', 
+            'dojo/text!./calculator.html'
+        ], function(parser, dom, on, ready, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, template) {
+
+            var Calculator = _WidgetBase.createSubclass([_TemplatedMixin, _WidgetsInTemplateMixin], {
+                templateString: template,
+
+                clearDisplay: function() {
+                    this.display.innerHTML = '0';
+                }
+            });
+
+            ready(function() {
+                parser.parse();
+            });
+        });
+    </script>
+</head>
+<body>
+   <div class="ecmCenterPane">
+	<div class="calculator-container">
+		<div class="calculator">
+			<div class="display" id="display">0</div>
+			<div class="keys">
+				<button class="specialkeys" data-dojo-attach-point="cancelbtn"
+					data-dojo-attach-event="onClick: clearDisplay">C</button>
+				<button data-dojo-attach-point="num7"
+					data-dojo-attach-event="onClick: appendNumber('7')">7</button>
+				<button data-dojo-attach-point="num8"
+					data-dojo-attach-event="onClick: appendNumber('8')">8</button>
+				<button data-dojo-attach-point="num9"
+					data-dojo-attach-event="onClick: appendNumber('9')">9</button>
+				<button class="operations" data-dojo-attach-point="slash"
+					data-dojo-attach-event="onClick: appendOperator('/')">/</button>
+				<button data-dojo-attach-point="num4"
+					data-dojo-attach-event="onClick: appendNumber('4')">4</button>
+				<button data-dojo-attach-point="num5"
+					data-dojo-attach-event="onClick: appendNumber('5')">5</button>
+				<button data-dojo-attach-point="num6"
+					data-dojo-attach-event="onClick: appendNumber('6')">6</button>
+				<button  class="operations" data-dojo-attach-point="asterik"
+					data-dojo-attach-event="onClick: appendOperator('*')">*</button>
+				<button data-dojo-attach-point="num1"
+					data-dojo-attach-event="onClick: appendNumber('1')">1</button>
+				<button data-dojo-attach-point="num2"
+					data-dojo-attach-event="onClick: appendNumber('2')">2</button>
+				<button data-dojo-attach-point="num3"
+					data-dojo-attach-event="onClick: appendNumber('3')">3</button>
+				<button class="operations" data-dojo-attach-point="hyphen"
+					data-dojo-attach-event="onClick: appendOperator('-')">-</button>
+				<button data-dojo-attach-point="num0"
+					data-dojo-attach-event="onClick: appendNumber('0')">0</button>
+				<button data-dojo-attach-point="dot"
+					data-dojo-attach-event="onClick: appendDecimal('.')">.</button>
+				<button class="specialkeys"data-dojo-attach-point="equal"
+					data-dojo-attach-event="onClick: calculate">=</button>
+				<button class="operations" data-dojo-attach-point="plus"
+					data-dojo-attach-event="onClick: appendOperator('+')">+</button>
+			</div>
+		</div>
+	</div>
+</div>
+    <script>
+        let displayValue = '0';
+        let operator = '';
+        let firstOperand = '';
+        let waitingForSecondOperand = false;
+
+        function updateDisplay() {
+            document.getElementById('display').innerText = displayValue;
+        }
+
+        function clearDisplay() {
+            displayValue = '0';
+            updateDisplay();
+        }
+
+        function appendNumber(number) {
+            if (displayValue === '0' || waitingForSecondOperand) {
+                displayValue = number;
+                waitingForSecondOperand = false;
+            } else {
+                displayValue += number;
+            }
+            updateDisplay();
+        }
+
+        function appendOperator(op) {
+            operator = op;
+            firstOperand = displayValue;
+            waitingForSecondOperand = true;
+        }
+
+        function appendDecimal() {
+            if (!displayValue.includes('.')) {
+                displayValue += '.';
+                updateDisplay();
+            }
+        }
+
+        function calculate() {
+            let result = '';
+            switch (operator) {
+                case '+':
+                    result = parseFloat(firstOperand) + parseFloat(displayValue);
+                    break;
+                case '-':
+                    result = parseFloat(firstOperand) - parseFloat(displayValue);
+                    break;
+                case '*':
+                    result = parseFloat(firstOperand) * parseFloat(displayValue);
+                    break;
+                case '/':
+                    result = parseFloat(firstOperand) / parseFloat(displayValue);
+                    break;
+                default:
+                    break;
+            }
+            displayValue = result.toString();
+            updateDisplay();
+            operator = '';
+            firstOperand = '';
+        }
+
+        updateDisplay();
+    </script>
+</body>
+</html>
