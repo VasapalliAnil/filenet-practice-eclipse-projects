@@ -14,6 +14,7 @@ define([
     _Widget,
     _TemplatedMixin,
     _WidgetsInTemplateMixin,
+    DropDownListEditor,
     template
 ) {
     return declare([DropDownListEditor,
