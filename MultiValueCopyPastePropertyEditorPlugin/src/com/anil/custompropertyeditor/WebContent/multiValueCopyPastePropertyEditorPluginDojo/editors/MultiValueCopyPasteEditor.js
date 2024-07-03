@@ -12,7 +12,7 @@ define([
         _EditorMixin
     ], {
  
-        //editorClass: "pvrDropDownEditor", // the css class applied to the main div of your widget
+        editorClass: "pvrDropDownEditor", // the css class applied to the main div of your widget
                                          // if not set your node will also have a undefined css class
                                          // not a big deal but that's better to use predefined class or yours
          
