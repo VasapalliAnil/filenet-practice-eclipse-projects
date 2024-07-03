@@ -1,9 +1,9 @@
 define([ "dojo/_base/declare", "dojo/_base/lang", "dojo/on", "dijit/_Widget",
 		"dijit/_TemplatedMixin", "dijit/_WidgetsInTemplateMixin",
-		"pvr/widget/editors/DropDownListEditor", "dojo/dom-construct",
+		"pvr/widget/editors/DropDownListEditor", "dojo/dom-construct","dojo/i18n!pvr/nls/common",
 		"dojo/text!./templates/MultiValueWidgetTemplate.html" ], function(
 		declare, lang, on, _Widget, _TemplatedMixin, _WidgetsInTemplateMixin,
-		DropDownListEditor, domConstruct, template) {
+		DropDownListEditor, domConstruct,resources, template) {
 	return declare([ DropDownListEditor, _Widget, _TemplatedMixin,
 			_WidgetsInTemplateMixin, ], {
 		// templateString: template,
