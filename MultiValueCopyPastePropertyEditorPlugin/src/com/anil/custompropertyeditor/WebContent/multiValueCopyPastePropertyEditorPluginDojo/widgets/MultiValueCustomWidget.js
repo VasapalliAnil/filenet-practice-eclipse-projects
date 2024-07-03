@@ -22,7 +22,7 @@ define([
         _WidgetsInTemplateMixin,
     ], {
         templateString: template,
-        widgetsInTemplate: true,
+        //widgetsInTemplate: true,
  
         postCreate: function() {
         	debugger;
