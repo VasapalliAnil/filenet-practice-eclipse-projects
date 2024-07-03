@@ -22,7 +22,7 @@ define([
         _TemplatedMixin,
         _WidgetsInTemplateMixin,
     ], {
-        templateString: template,
+        //templateString: template,
         //widgetsInTemplate: true,
  
         postCreate: function() {
@@ -30,6 +30,12 @@ define([
             this.inherited(arguments);
             
             // Handle button click
+         // Create the button element
+            var button = domConstruct.create("button", {
+                innerHTML: "Click Me!",
+                style: "margin-left: 10px;"
+            }, this.domNode);
+            
             this.own(
                 on(this.customButton, 'click', this._onButtonClick.bind(this))
             );
