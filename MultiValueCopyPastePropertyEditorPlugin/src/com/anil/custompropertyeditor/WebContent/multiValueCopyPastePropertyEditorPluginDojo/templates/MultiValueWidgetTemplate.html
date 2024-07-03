@@ -1,0 +1,8 @@
+<div class="myClass">
+    <!-- The node that should get the focus should have the focusNode attach point. pvr/widget/_Property._createEditorWidget needs this because it wants to set the aria-labelledby on it -->
+    
+    <button data-dojo-attach-point="lookupButtonNode"
+			class="lookupButtonClass" data-dojo-type="dijit/form/Button"
+			data-dojo-props="iconClass:'lookupIcon', showLabel: false" data-dojo-attach-event="onClick:openLookupDailog"
+			type="button">Lookup</button>
+</div>
