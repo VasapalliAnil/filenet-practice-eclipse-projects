@@ -5,6 +5,7 @@ define([
     "dijit/_Widget",
     "dijit/_TemplatedMixin",
     "dijit/_WidgetsInTemplateMixin",
+    "pvr/widget/editors/DropDownListEditor",
     "dojo/text!./templates/MultiValueWidgetTemplate.html"
     ], function (
     declare,
@@ -15,7 +16,7 @@ define([
     _WidgetsInTemplateMixin,
     template
 ) {
-    return declare([
+    return declare([DropDownListEditor,
         _Widget,
         _TemplatedMixin,
         _WidgetsInTemplateMixin,
@@ -23,40 +24,19 @@ define([
         templateString: template,
         widgetsInTemplate: true,
  
-        postCreate: function () {
-        	console.log("post create method");
-        	if(!this.IsitLookup){
-        		dojo.style(this.lookupButtonNode.domNode,'display','none');
-        	}
-        	else{
-        		dojo.query(".lookupButtonClass").query(".dijitButtonNode")[0].style = "padding: 0; border: none;background-color: transparent;outline: none;border-radius: 15px;";
-        	}
-        	
-            // We are listening to our input field for updates, then emit an event
-            // by calling our onChange method. In our case, this will notify the 
-            // _EditorMixin that it should update the property's value, but that good
-            // practice anyway
-            on(this.inputField, "change", lang.hitch(this, function (value) {
-                this.onChange(value);
-            }));
+        postCreate: function() {
+        	debugger;
+            this.inherited(arguments);
+            
+            // Handle button click
+            this.own(
+                on(this.customButton, 'click', this._onButtonClick.bind(this))
+            );
         },
-        // _EditorMixin is listening to this, so call it when your widget changes
-        onChange: function (value) {},
- 
-        // Setter and Getter for the value member should be
-        // connected to our input field's value, and can
-        // become more complex if we add other inner widgets
-        // to our widget
-        _getValueAttr: function () {
-            return this.inputField.get("value");
-        },
-        _setValueAttr: function (value) {
-            this.inputField.set("value", value);
-        },
-        openLookupDailog: function(){
-        	console.log("Lookup button clicked");
-        	
-        	
+
+        _onButtonClick: function() {
+            // Add your button click handling logic here
+            console.log("Button clicked!");
         }
          
     });

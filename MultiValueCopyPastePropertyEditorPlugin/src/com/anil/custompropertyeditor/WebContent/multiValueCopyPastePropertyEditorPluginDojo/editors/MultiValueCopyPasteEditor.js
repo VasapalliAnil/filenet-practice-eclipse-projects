@@ -2,29 +2,23 @@ define([
     "dojo/_base/declare",
     "dojo/_base/lang",
     "dojo/dom-style",
-   // "multiValueCopyPastePropertyEditorPluginDojo/widgets/MultiValueCustomWidget",
-    "pvr/widget/editors/DropDownListEditor",
+    "multiValueCopyPastePropertyEditorPluginDojo/widgets/MultiValueCustomWidget",
     "pvr/widget/editors/mixins/_EditorMixin"
 ], function(
-    declare, lang, domStyle, DropDownListEditor, _EditorMixin
+    declare, lang, domStyle, MultiValueCustomWidget, _EditorMixin
 ) {
     return declare([
-        DropDownListEditor,
+        MultiValueCustomWidget,
         _EditorMixin
     ], {
  
-       // the css class applied to the main div of your widget
+        //editorClass: "pvrDropDownEditor", // the css class applied to the main div of your widget
                                          // if not set your node will also have a undefined css class
                                          // not a big deal but that's better to use predefined class or yours
          
         // The _EditorMixin is calling this and is using this.oneuiBaseNode in it,
         // so you have to either have a oneuiBaseNode attach-point in your template, or 
         // overwrite these functions (adjustWidth and resetWidth) or it will fail
-        postCreate: function() {
-			this.inherited(arguments);
-
-			console.log("inside custo post create");
-		},
         adjustWidth: function(widthSettings) {
             domStyle.set(this.inputField, "width", this.computeAdjustedWidth(widthSettings.computed, widthSettings) + "px");
         },
