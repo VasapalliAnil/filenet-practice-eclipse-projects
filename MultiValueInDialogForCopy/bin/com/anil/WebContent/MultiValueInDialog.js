@@ -3,7 +3,7 @@ require(["dojo/_base/lang","dojo/on", "dojo/dom","dojo/aspect", "pvr/widget/edit
 
     /* This below code is for populating the props when we use OOTB Add document using entry template */
         aspect.after(pvr.widget.editors._DropDownEditor.prototype, "postCreate", function() {
-		//debugger;
+		debugger;
 			if(this.description == "Country names"  || this.description == "Phone Numbers"){
 				//debugger;
 				var containerNode=this.getParent().domNode;
