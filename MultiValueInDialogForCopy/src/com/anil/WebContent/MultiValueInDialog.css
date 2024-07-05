@@ -11,7 +11,7 @@
 }
 
 .paste-button {
-            margin-left: 50px;
+            margin-left: 5px;
             padding: 0; /* Remove padding to fit the icon */
             width: 24px; /* Set the width of the button to fit the icon */
             height: 24px; /* Set the height of the button to fit the icon */
