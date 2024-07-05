@@ -49,9 +49,7 @@ require(
                     style: "width: 300px;"
                 });
                 
-             // Place the dialog inside the parent node
-                domConstruct.place(myDialog.domNode, containerNode);
-                
+             
                 // Attach event handler to the OK button inside the Dialog
                 on(myDialog, "show", function() {
                     var okButton = document.getElementById("okButton");
@@ -80,6 +78,10 @@ require(
                 // DropDownListEditor
                 containerNode.appendChild(copyButton.domNode);
                 containerNode.appendChild(pasteButton.domNode);
+                
+             // Place the dialog inside the parent node
+                domConstruct.place(myDialog.domNode, containerNode);
+                
                 
                 // adjust the styles
                 if (containerNode.childNodes[2].childNodes[0] != undefined) {
