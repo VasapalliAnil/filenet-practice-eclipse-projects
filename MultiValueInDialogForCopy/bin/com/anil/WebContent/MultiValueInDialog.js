@@ -72,10 +72,11 @@ require(
                                 if (previousmessageDialogDialog) {
                                     previousmessageDialogDialog.destroyRecursive(); // Destroy the previous instance
                                 }
+                                var msgContent='<div>Please enter some data to paste <div style="text-align: right; margin-top: 10px;"><button id="ok_' + uniqueIdentifier + '" style="margin-right: 10px;">OK</button></div></div>';
                                 var messageDialog = new Dialog({
                                     id: messageDialogId,
                                     title: "Warning",
-                                    content: '<div><div style="text-align: right; margin-top: 10px;"><button id="ok_' + uniqueIdentifier + '" style="margin-right: 10px;">OK</button></div></div>',
+                                    content: msgContent,
                                     style: "width: 250px;"
                                 });
                                 var ok = document.getElementById("ok_" + uniqueIdentifier);
