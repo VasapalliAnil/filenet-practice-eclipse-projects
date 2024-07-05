@@ -88,6 +88,9 @@ require(
 									// DropDownListEditor
 									containerNode
 											.appendChild(copyButton.domNode);
+									containerNode
+									.appendChild(pasteButton.domNode); 
+									
 									if (containerNode.childNodes[2].childNodes[0] != undefined) {
 										containerNode.childNodes[2].childNodes[0].style = "border:none;outline:none;background-color:transparent;";
 									} else {
