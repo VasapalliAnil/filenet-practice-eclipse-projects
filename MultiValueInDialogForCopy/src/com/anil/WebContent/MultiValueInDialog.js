@@ -44,36 +44,27 @@ require(
                     iconClass: "paste-button",
                     showLabel: false,
                     onClick: function() {
-                        console.log("Paste Button Clicked");
+                        var myDialog = new Dialog({
+                            id: "myDialog_" + uniqueIdentifier,
+                            title: "Add Content",
+                            content: '<div><textarea id="userTextArea_' + uniqueIdentifier + '" rows="10" cols="30"></textarea><br><button id="okButton_' + uniqueIdentifier + '">OK</button></div>',
+                            style: "width: 300px;"
+                        });
+                        // Attach event handler to OK button inside the dialog
+                        var okButton = document.getElementById("okButton_" + uniqueIdentifier);
+                        var userTextArea = document.getElementById("userTextArea_" + uniqueIdentifier);
+                        on(okButton, "click", function() {
+                            var userInput = userTextArea.value;
+                            console.log("User input: " + userInput);
+                            // Logic to handle user input
+                            myDialog.hide();
+                        });
+                        // Clear textarea content when dialog is hidden
+                        on(myDialog, "hide", function() {
+                            userTextArea.value = "";
+                        });
                         myDialog.show();
                     }
-                }, "pasteButton");
-                // Create the Dialog
-                var myDialog = new Dialog({
-                    id: "myDialog_" + uniqueIdentifier,
-                    title: "Add Content",
-                    content: '<div><textarea id="userTextArea_' + uniqueIdentifier + '" rows="10" cols="30"></textarea><br><button id="okButton_' + uniqueIdentifier + '">OK</button></div>',
-                    style: "width: 300px;"
-                });
-                // Attach event handler to the OK button inside the Dialog
-                on(myDialog, "show", function() {
-                    var okButton = document.getElementById("okButton_" + uniqueIdentifier);
-                    var userTextArea = document.getElementById("userTextArea_" + uniqueIdentifier);
-                    on(okButton, "click", function() {
-                        var userInput = userTextArea.value;
-                        console.log("User input: " + userInput);
-                        // Split the user input by commas and trim whitespace
-                        var userInputArray = userInput.trim().split(',');
-                        // Merge the arrays
-                        var existingValues = editor._getValueAttr();
-                        editor._setValueAttr(existingValues.concat(userInputArray));
-                        myDialog.hide();
-                    });
-                });
-                // Clear the textarea content when the dialog is hidden
-                on(myDialog, "hide", function() {
-                    var userTextArea = document.getElementById("userTextArea");
-                    userTextArea.value = "";
                 });
                 // add the copy and paste button beside the
                 // DropDownListEditor
