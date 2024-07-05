@@ -44,8 +44,14 @@ require(
                     iconClass: "paste-button",
                     showLabel: false,
                     onClick: function() {
+                    	// Destroy previous dialog instance if exists
+                    	var dialogId="myDialog_" + uniqueIdentifier;
+                    	var previousDialog = dijit.byId(dialogId);
+                    	if (previousDialog) {
+                    	    previousDialog.destroyRecursive(); // Destroy the previous instance
+                    	}
                         var myDialog = new Dialog({
-                            id: "myDialog_" + uniqueIdentifier,
+                            id: dialogId,
                             title: "Add Content",
                             content: '<div><textarea id="userTextArea_' + uniqueIdentifier + '" rows="10" cols="30"></textarea><br><button id="okButton_' + uniqueIdentifier + '">OK</button></div>',
                             style: "width: 300px;"
@@ -54,10 +60,14 @@ require(
                         var okButton = document.getElementById("okButton_" + uniqueIdentifier);
                         var userTextArea = document.getElementById("userTextArea_" + uniqueIdentifier);
                         on(okButton, "click", function() {
-                            var userInput = userTextArea.value;
-                            console.log("User input: " + userInput);
-                            // Logic to handle user input
-                            myDialog.hide();
+                        	 var userInput = userTextArea.value;
+                             console.log("User input: " + userInput);
+                             // Split the user input by commas and trim whitespace
+                             var userInputArray = userInput.trim().split(',');
+                             // Merge the arrays
+                             var existingValues = editor._getValueAttr();
+                             editor._setValueAttr(existingValues.concat(userInputArray));
+                             myDialog.hide();
                         });
                         // Clear textarea content when dialog is hidden
                         on(myDialog, "hide", function() {
