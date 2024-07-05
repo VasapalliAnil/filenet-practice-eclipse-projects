@@ -29,10 +29,11 @@ require(
                         console.log(" Copy Button Clicked");
                         // label value
                         var label = this.getParent().domNode.childNodes[1].innerText;
+                        var finalLabel = label.replaceAll(", ", ",");
                         // create a message dialog
                         var messageDialog = new ecm.widget.dialog.BaseDialog();
                         messageDialog.setTitle("Value");
-                        messageDialog.setMessage(label, "info");
+                        messageDialog.setMessage(finalLabel, "info");
                         messageDialog.show();
                     }
                 }, "copyButton");
@@ -44,30 +45,53 @@ require(
                     iconClass: "paste-button",
                     showLabel: false,
                     onClick: function() {
-                    	// Destroy previous dialog instance if exists
-                    	var dialogId="myDialog_" + uniqueIdentifier;
-                    	var previousDialog = dijit.byId(dialogId);
-                    	if (previousDialog) {
-                    	    previousDialog.destroyRecursive(); // Destroy the previous instance
-                    	}
+                        // Destroy previous dialog instance if exists
+                        var dialogId = "myDialog_" + uniqueIdentifier;
+                        var previousDialog = dijit.byId(dialogId);
+                        if (previousDialog) {
+                            previousDialog.destroyRecursive(); // Destroy the previous instance
+                        }
                         var myDialog = new Dialog({
                             id: dialogId,
                             title: "Add Content",
-                            content: '<div><textarea id="userTextArea_' + uniqueIdentifier + '" rows="10" cols="30"></textarea><br><button id="okButton_' + uniqueIdentifier + '">OK</button></div>',
+                            content: '<div><textarea id="userTextArea_' + uniqueIdentifier + '" rows="10" cols="30"></textarea><br><button id="okButton_' + uniqueIdentifier + '">OK</button><button id="cancelButton_' + uniqueIdentifier + '">Cancel</button></div>',
                             style: "width: 300px;"
                         });
                         // Attach event handler to OK button inside the dialog
                         var okButton = document.getElementById("okButton_" + uniqueIdentifier);
+                        var cancelButton = document.getElementById("cancelButton_" + uniqueIdentifier);
                         var userTextArea = document.getElementById("userTextArea_" + uniqueIdentifier);
                         on(okButton, "click", function() {
-                        	 var userInput = userTextArea.value;
-                             console.log("User input: " + userInput);
-                             // Split the user input by commas and trim whitespace
-                             var userInputArray = userInput.trim().split(',');
-                             // Merge the arrays
-                             var existingValues = editor._getValueAttr();
-                             editor._setValueAttr(existingValues.concat(userInputArray));
-                             myDialog.hide();
+                            var userInput = userTextArea.value.trim(); // Trim whitespace
+                            // Check if user input is empty
+                            if (userInput === "") {
+                                // Show popup with message
+                                var messageDialog = new Dialog({
+                                    title: "Warning",
+                                    content: "Please enter some data to paste.",
+                                    style: "width: 300px;"
+                                });
+                                var okButtonDialog = new Button({
+                                    label: "OK",
+                                    onClick: function() {
+                                        messageDialog.hide(); // Hide the message dialog
+                                    }
+                                });
+                                messageDialog.addChild(okButtonDialog);
+                                messageDialog.show(); // Show the message dialog
+                            } else {
+                                console.log("User input: " + userInput);
+                                // Split the user input by commas and trim whitespace
+                                var userInputArray = userInput.trim().split(',');
+                                // Merge the arrays
+                                var existingValues = editor._getValueAttr();
+                                editor._setValueAttr(existingValues.concat(userInputArray));
+                                myDialog.hide();
+                            }
+                        });
+                        // Attach event handler to Cancel button inside the dialog
+                        on(cancelButton, "click", function() {
+                            myDialog.hide(); // Hide the paste dialog
                         });
                         // Clear textarea content when dialog is hidden
                         on(myDialog, "hide", function() {
