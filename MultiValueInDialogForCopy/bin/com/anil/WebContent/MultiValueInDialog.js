@@ -54,8 +54,8 @@ require(
                         var myDialog = new Dialog({
                             id: dialogId,
                             title: "Add Content",
-                            content: '<div><textarea id="userTextArea_' + uniqueIdentifier + '" rows="10" cols="30"></textarea><br><button id="okButton_' + uniqueIdentifier + '">OK</button><button id="cancelButton_' + uniqueIdentifier + '">Cancel</button></div>',
-                            style: "width: 300px;"
+                            content: '<div><textarea id="userTextArea_' + uniqueIdentifier + '" rows="10" cols="30"></textarea><br><div style="text-align: right; margin-top: 10px;"><button id="okButton_' + uniqueIdentifier + '" style="margin-right: 10px;">OK</button><button id="cancelButton_' + uniqueIdentifier + '">Cancel</button></div></div>',
+                            style: "width: 400px;"
                         });
                         // Attach event handler to OK button inside the dialog
                         var okButton = document.getElementById("okButton_" + uniqueIdentifier);
@@ -66,18 +66,22 @@ require(
                             // Check if user input is empty
                             if (userInput === "") {
                                 // Show popup with message
+                                // Destroy previous dialog instance if exists
+                                var messageDialogId = "messageDialog_" + uniqueIdentifier;
+                                var previousmessageDialogDialog = dijit.byId(messageDialogId);
+                                if (previousmessageDialogDialog) {
+                                    previousmessageDialogDialog.destroyRecursive(); // Destroy the previous instance
+                                }
                                 var messageDialog = new Dialog({
+                                    id: messageDialogId,
                                     title: "Warning",
-                                    content: "Please enter some data to paste.",
-                                    style: "width: 300px;"
+                                    content: '<div><div style="text-align: right; margin-top: 10px;"><button id="ok_' + uniqueIdentifier + '" style="margin-right: 10px;">OK</button></div></div>',
+                                    style: "width: 250px;"
                                 });
-                                var okButtonDialog = new Button({
-                                    label: "OK",
-                                    onClick: function() {
-                                        messageDialog.hide(); // Hide the message dialog
-                                    }
+                                var ok = document.getElementById("ok_" + uniqueIdentifier);
+                                on(ok, "click", function() {
+                                    messageDialog.hide();
                                 });
-                                messageDialog.addChild(okButtonDialog);
                                 messageDialog.show(); // Show the message dialog
                             } else {
                                 console.log("User input: " + userInput);
