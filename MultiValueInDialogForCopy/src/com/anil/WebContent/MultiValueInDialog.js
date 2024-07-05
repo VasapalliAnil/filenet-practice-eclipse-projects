@@ -59,7 +59,7 @@ require(
                         var userInput = userTextArea.value;
                         console.log("User input: " + userInput);
                      // Split the user input by commas and trim whitespace
-                        var userInputArray = userInput.split(',').map(item = item.trim());
+                        var userInputArray = userInput.trim().split(',');
                         // Merge the arrays
                         var existingValues=editor._getValueAttr(); 
                         editor._setValueAttr(existingValues.concat(userInputArray));
