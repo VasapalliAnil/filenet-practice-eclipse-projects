@@ -3,22 +3,111 @@ define([
     "dojo/json",
     "dojo/_base/lang",
     "dojo/aspect",
-    "ecm/widget/listView/ContentList",
+    "dojo/data/util/sorter",
+    //"ecm/widget/listView/ContentList",
+    "./ContentList",
     "icm/pgwidget/inbasket/Inbasket",
     "gridx/modules/Pagination",
     "gridx/modules/pagination/PaginationBar"
-], function(declare, json, lang, aspect, ContentList, Inbasket, Pagination, PaginationBar) {
-    return declare("icmsample.pgwidget.ICMCuringHighlightWidget", [Inbasket], {
+], function(declare, json, lang, aspect, sorter,ContentList, Inbasket, Pagination, PaginationBar) {
+    return declare("icmsample.pgwidget.custominbasket.CustomInbasket", [Inbasket], {
 
         buildRendering: function() {
             console.log(this.templateString);
             this.inherited(arguments);
         },
+        //Override the createInbasketTab function, using the custom content list
+
+        createInbasketTab: function(tabs) {         
+
+            for(var i = 0; i < tabs.length; i++) {
+
+                var cl = new ContentList(tabs[i]);//Create contentlist
+
+                cl.setContentListModules(this._getContentListModules());
+
+                this.tabContainer.addChild(cl);
+
+                this.contentLists.push(cl);
+
+            }
+
+        },
+
+        
+
+        //Override the _processResultSet function, add hook to the doSort() function on resultSet, make it do client side sort when there are secondary sort.
+
+        _processResultSet:function(resultSet){
+
+            //Custom sort function
+
+            var doSort = function(p, afterSort, store){
+
+                //The p is a list of user choosed sort columns in the UI, if its length is bigger than 1, we try it as secondary sort
+            	// add the first column as a server side sortint
+            	var sort=[];
+                 sort.push({
+                	 "colId": "5",
+                	 "descending": true,
+                	 "attribute": "BAO_FirstName"
+                 });
+                 sort.push(p[0]);
+                 p=sort;
+                if (store && this.items && p.length > 1){
+
+                    var sortStore = {
+
+                        comparatorMap: store.comparatorMap,
+
+                        getValue: function(item, attribute) {
+
+                            var value = null;
+
+                            if (item && item.getValue) {
+
+                                value = item.getValue(attribute);
+
+                            }
+
+                            return value;
+
+                        }
+
+                    };
+
+                    this.items.sort(sorter.createSortFunction(p, sortStore));
+
+                    if (afterSort) {
+
+                        afterSort(this);
+
+                    }                   
+
+                }else{
+
+                    //Do the default sort provide by original resultSet, it's server sort if client doesn't retrieve all items back, otherwise it also do client sort
+
+                    this.orig_doSort(p, afterSort, store);
+
+                }
+
+            };
+
+            resultSet.orig_doSort = lang.hitch(resultSet, resultSet.doSort);            
+
+            resultSet.doSort = lang.hitch(resultSet, doSort);//replace the original sort with the custom sort
+
+            
+
+            this.inherited(arguments);
+
+        },
 
         postCreate: function() {
             console.log("inside custom inbasket");
             this.inherited(arguments);
-            aspect.after(this, "createContentList", lang.hitch(this, "ColorNdPagination"), true);
+            //aspect.after(this, "createContentList", lang.hitch(this, "ColorNdPagination"), true);
         },
 
         ColorNdPagination: function() {
@@ -65,7 +154,7 @@ define([
             console.log("caseTypes[0].id:---", this.caseTypes[0].id);
             /*console.log("caseTypes[1].id:---",this.caseTypes[1].id);*/
             console.log("caseTypes[0].id:---", this.caseTypes[0].id);
-            if (solution == "BILL OF ENTRY") {
+            if (solution == "BOE") {
                 console.log("inside DM Colour and Needed DM Pagination");
                 var cl = this.contentLists[this.selectedIndex];
                 var _grid = cl.grid;
@@ -103,7 +192,7 @@ define([
 
 
             }
-            if (solution == "IMPORT BILL") {
+            if (solution == "IB") {
 
                 console.log("inside DM Colour and Needed DM Pagination");
                 var cl = this.contentLists[this.selectedIndex];
@@ -231,7 +320,7 @@ define([
                 _grid.pagination.gotoPage(0);
             }
 
-            /*Nithin User Story 694*/
+            
             if (solution == "OBC") {
                 var cl = this.contentLists[this.selectedIndex];
                 var _grid = cl.grid;
@@ -265,7 +354,7 @@ define([
                 _grid.pagination.gotoPage(0);
 
             }
-            /*Nithin User Story 694*/
+            
             if (solution == "IBC") {
 
 
@@ -337,18 +426,7 @@ define([
 
 
 
-        }
+        },
+        _eoc_: null
     });
 });
-
-
-
-
-/*coloring widget js update Code updated date : 20 Dec 21 v.0001*/
-
-
-
-
-//# sourceURL=/ICMCuringHighlightWidget/icmsample/pgwidget/ICMCuringHighlightWidget.js
-
-//# sourceURL=/ICMCuringHighlightWidget/icmsample/pgwidget/ICMCuringHighlightWidget.js
