@@ -67,7 +67,11 @@ define([
                             if (item && item.getValue) {
 
                                 value = item.getValue(attribute);
-
+// change the string prperoty to consider it as integer while sorting which
+                                // fixe the wid string prop sorting issue
+                                if(attribute == "BAO_LastName"){
+                                    value=parseInt(value);
+                                }
                             }
 
                             return value;
