@@ -1,9 +1,14 @@
 package com.anil.peapi;
 
+import org.w3c.dom.Document;
+
+import filenet.vw.api.VWAttributeInfo;
 import filenet.vw.api.VWFetchType;
+import filenet.vw.api.VWQueueDefinition;
 import filenet.vw.api.VWRoster;
 import filenet.vw.api.VWRosterQuery;
 import filenet.vw.api.VWSession;
+import filenet.vw.api.VWSystemConfiguration;
 import filenet.vw.api.VWWorkObject;
 
 public class ProcessEngineUtility {
@@ -96,6 +101,39 @@ public class ProcessEngineUtility {
 			System.out.println("Wid not found with the search criteria");
 		}
 
+	}
+
+	public void updateCQWithCodeModule(VWSession vwSession,String codemoduleId,String componentQName) throws Exception {
+		
+		// TODO Auto-generated method stub
+		System.out.println("Inside update componenet queue");
+		VWSystemConfiguration vsc=vwSession.fetchSystemConfiguration();
+		
+		
+		
+		VWQueueDefinition cqd=vsc.getQueueDefinition(componentQName);
+		System.out.println("Component Queue Name :"+cqd.getName());
+		System.out.println("Get All the attributes");
+		
+			VWAttributeInfo	ainfo=cqd.getAttributeInfo();
+			String[] attrList=ainfo.getAttributeNames();
+		if(attrList != null){
+			String attr="F_ComponentDescriptor";
+				System.out.println("Field Name : "+attr);
+				System.out.println("value is : "+ainfo.getFieldValue(attr));
+				
+				String doc=(String) ainfo.getFieldValue(attr);
+				
+				String updatedDescriptor=XMLUpdater.updateCodeModuleIdInXML(doc,codemoduleId);
+				//System.out.println("Updated value is : "+updatedDescriptor);
+			
+			ainfo.setFieldValue("F_ComponentDescriptor", updatedDescriptor);
+			cqd.setAttributeInfo(ainfo);
+			vsc.commit();
+			System.out.println("Component Queue updated");
+		}
+		
+		
 	}
 
 }
